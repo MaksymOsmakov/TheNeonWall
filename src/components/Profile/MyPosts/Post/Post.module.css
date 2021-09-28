@@ -1,5 +1,6 @@
 .item {
 	color: #fff;
+	margin-top: 10px;
 	
 }
 .item span{
@@ -7,7 +8,6 @@
 	text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18, 2px 2px 3px rgba(22,186,206,0);
 	margin-right: 10px;
 	margin-left: 10px;
-	cursor: pointer;
 }
 .item img {
 	width: 50px;

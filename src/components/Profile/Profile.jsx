@@ -7,13 +7,19 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
 
+
 function Profile(props) {
 
 
 	return (
 		<>
 			<ProfileInfo />
-			<MyPosts posts={props.state.posts} />
+			<MyPosts
+				posts={props.state.posts}
+				addPost={props.addPost}
+				newPostText={props.state.newPostText}
+				updateNewPostText={props.updateNewPostText}
+			/>
 		</>
 	);
 }
