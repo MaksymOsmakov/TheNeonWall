@@ -1,0 +1,56 @@
+.app-wrapper {
+	display: grid;
+	width: 1200px;
+	margin: 0 auto;
+
+	grid-template-areas:
+		"h h"
+		"n c";
+
+	grid-template-rows: 60px 1fr;
+	grid-template-columns: 2fr 10fr;
+	grid-gap: 40px;
+}
+
+.content {
+	grid-area: c;
+	background-color: #0e1111cb;
+	box-shadow: 0 0 10px 1px #fff, /* inner white */ 0 0 15px 2px #f0f, /* middle magenta */ 0 0 20px 4px #0ff;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+@media (max-width: 635px) {
+	.content {
+		margin: 8% 3% 1% 1%;
+		padding: 10px;
+	}
+}
+@media (max-width: 1270px) {
+	.app-wrapper {
+		width: 900px;
+	}
+}
+@media (max-width: 991px) {
+	.app-wrapper {
+		width: 90%;
+
+		grid-template-areas:
+			"h"
+			"n"
+			"f"
+			"c";
+		grid-template-rows: 60px 60px 100px 2fr;
+		grid-template-columns: 1fr;
+	}
+}
+@media (max-width: 991px) {
+	.app-wrapper {
+		grid-gap: 25px;
+	}
+}

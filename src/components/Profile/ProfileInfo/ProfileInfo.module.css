@@ -1,0 +1,16 @@
+.profile img {
+	min-width: 100%;
+	height: 150px;
+	box-sizing: border-box;
+}
+
+.profile p {
+	color: #fff;
+}
+
+@media (max-width: 635px) {
+	.profile img{
+		display: none;
+	}
+}
+
