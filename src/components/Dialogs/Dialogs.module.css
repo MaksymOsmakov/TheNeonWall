@@ -1,7 +1,8 @@
 .dialogs {
 	display: grid;
-	grid-template-columns: 4fr 8fr;
+	grid-template-columns: 1fr 2fr;
 	color: #fff;
+	height: 99%;
 }
 
 .dialogsItems {
@@ -12,6 +13,11 @@
 .dialog {
 	cursor: pointer;
 	margin: 15px 0;
+}
+
+.send {
+	display: flex;
+	flex-direction: column;
 }
 .dialog a {
 	color: #fff;
@@ -39,6 +45,10 @@
 
 .messages {
 	padding: 35px;
+	padding-bottom: 0;
+	display: grid;
+	grid-template-rows: 1fr 100px;
+
 }
 
 .message {

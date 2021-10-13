@@ -13,8 +13,6 @@
 	-moz-border-radius: 50%;
 	-ms-border-radius: 50%;
 	-o-border-radius: 50%;
-	padding: 0;
-	margin: 0;
 	z-index: 2;
 }
 
@@ -26,11 +24,11 @@
 	z-index: 1;
 	margin: 0;
 	font-size: 15px;
-	
 }
 
 .name:hover {
-	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18,	0 0 55px #49ff18, 0 0 75px #49ff18, 2px 2px 3px rgba(22, 186, 206, 0);
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18,
+		0 0 55px #49ff18, 0 0 75px #49ff18, 2px 2px 3px rgba(22, 186, 206, 0);
 	transition: 0.2s ease-in;
 	-webkit-transition: 0.2s ease-in;
 	-moz-transition: 0.2s ease-in;
@@ -53,7 +51,6 @@
 		height: 40px;
 	}
 }
-
 @keyframes glow {
 	0% {
 		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073,
@@ -65,5 +62,3 @@
 			0 0 70px #ff4da6, 0 0 110px #ff4da6;
 	}
 }
-
-

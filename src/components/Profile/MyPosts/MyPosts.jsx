@@ -2,23 +2,27 @@ import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post.jsx';
 
+import { updateNewPostTextActionCreator } from '../../../redux/state';
+import { addPostActionCreator } from './../../../redux/state';
+
 
 function MyPosts(props) {
 
-
 	//use .map method
-	let postsElements = props.posts.map(post => <Post message={post.message} like={post.likesCount} />)
+	let postsElements =
+		props.posts.map(post => <Post message={post.message} like={post.likesCount} />)
 
 	// post Fun
 	let newPostElement = React.createRef();
 	let addPost = () => {
-		props.addPost();
+		props.dispatch(addPostActionCreator());
 	};
 
 	//textarea
-	let onPostChange = () => {
+	function onPostChange() {
 		let text = newPostElement.current.value;
-		props.updateNewPostText(text);
+		let action = updateNewPostTextActionCreator(text);
+		props.dispatch(action);
 	}
 
 
@@ -27,12 +31,9 @@ function MyPosts(props) {
 
 	return (
 		<div className={classes.postsBlock}>
-			<h3>My posts</h3>
 			<div>
-				<div>
+				<div className={classes.addWrapper}>
 					<textarea ref={newPostElement} onChange={onPostChange} value={props.newPostText} />
-				</div>
-				<div>
 					<button onClick={addPost} className={classes.btn}>Add Post</button>
 				</div>
 			</div>

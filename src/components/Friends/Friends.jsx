@@ -16,7 +16,7 @@ const Friends = (props) => {
 				<img alt='avatar' className={classes.avatar} src={props.avatar} />
 			</div>
 			<div>
-				<NavLink to={'/dialogs/'+ 'friend/' + props.id}  className={classes.name} activeClassName={classes.active}>{props.name}</NavLink>
+				<NavLink to={'/dialogs/' + 'friend/' + props.id} className={classes.name} activeClassName={classes.active}>{props.name}</NavLink>
 			</div>
 		</div>
 	);

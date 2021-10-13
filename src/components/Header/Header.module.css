@@ -10,12 +10,6 @@
 	margin-top: -20px;
 }
 
-@media (max-width: 635px) {
-	.header {
-		margin: -20px 3% 1% 1%;
-	}
-}
-
 .header h1 {
 	text-align: left;
 	color: #fff;
@@ -37,6 +31,5 @@
 @media (max-width: 370px) {
 	.header h1 {
 		font-size: 22px;
-		text-align: center;
 	}
 }

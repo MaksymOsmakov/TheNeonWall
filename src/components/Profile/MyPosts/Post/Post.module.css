@@ -1,15 +1,16 @@
 .item {
 	color: #fff;
 	margin-top: 10px;
-	
-}
-.item span{
-	color: #fff;
-	text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18, 2px 2px 3px rgba(22,186,206,0);
-	margin-right: 10px;
-	margin-left: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.671);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
 }
 .item img {
+	margin-top: 5px;
+	margin-left: 5px;
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
@@ -17,5 +18,19 @@
 	-moz-border-radius: 50%;
 	-ms-border-radius: 50%;
 	-o-border-radius: 50%;
-
+}
+.message {
+	margin-left: 5px;
+	word-wrap: break-word;
+	max-width: 90%;
+}
+.likesWrapper {
+	text-align: right;
+	margin-right: 5px;
+}
+.likes {
+	cursor: pointer;
+	color: #fff;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18,
+		0 0 55px #49ff18, 0 0 75px #49ff18, 2px 2px 3px rgba(22, 186, 206, 0);
 }
