@@ -9,21 +9,20 @@ import Message from './Message/Message';
 
 const Dialogs = (props) => {
 
+	let state = props.dialogsPage;
 
+	let dialogsElements = state.dialogs.map(dialog => <DialogItem name={dialog.name} key={dialog.name} id={dialog.id} />);
+	let messagesElements = state.messages.map(message => <Message message={message.message} key={message.id} />);
+	let newMessageBody = state.newMessageBody;
 
-	let dialogsElements = props.messagesPage.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />);
-	let messagesElements = props.messagesPage.messages.map(message => <Message message={message.message} />);
-
-
-	let newMessageElement = React.createRef();
-	let onMessageChange = () => {
-		let newMessage = newMessageElement.current.value;
-		props.dispatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: newMessage });
-
+	let onNewMessageChange = (e) => {
+		let body = e.target.value;
+		props.updateNewMessageBody(body);
 	}
-	let addMessage = () => {
-		props.dispatch({ type: 'ADD-MESSAGE', });
+	// e в свойствах функции значит event - событие условное обозначение что бы понять у чего берем значение
 
+	let onSendMessageClick = () => {
+		props.sendMessage();
 	};
 
 
@@ -31,25 +30,24 @@ const Dialogs = (props) => {
 
 	return (
 		<div className={classes.dialogs}>
+
 			<div className={classes.dialogsItems}>
-				<div>
-					{dialogsElements}
-				</div>
+
+				{dialogsElements}
+
 			</div>
 
 			<div className={classes.messages}>
-				<div>
+				<div className={classes.dialogWindow}>
 					{messagesElements}
 				</div>
+
 				<div className={classes.send}>
-					<textarea ref={newMessageElement} onChange={onMessageChange} value={props.messagesPage.newMessageText} />
-
-					<button onClick={addMessage} className={classes.btn}>Send</button>
+					<textarea placeholder='Your message' onChange={onNewMessageChange} value={newMessageBody} />
+					<button onClick={onSendMessageClick} className={classes.btn}>Send</button>
 				</div>
+
 			</div>
-
-
-
 		</div>
 	);
 };

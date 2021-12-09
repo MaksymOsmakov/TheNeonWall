@@ -1,51 +1,55 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
-import Nav from './components/NavBar/Nav';
-import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
+import NavContainer from './components/NavBar/NavContainer';
+import ProfileContainer from './components/Profile/Profile';
 import { Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 
 
 
-function App(props) {
+
+function App() {
 	return (
-		<BrowserRouter>
-			<div className='app-wrapper'>
 
-				<Header />
+		<div className='app-wrapper'>
 
-				<Nav state={props.state.navbarPage} />
+			<Header />
 
-				<div className="content">
+			<NavContainer />
 
-					<Route path="/dialogs" render={() =>
-						<Dialogs
-							messagesPage={props.state.messagesPage}
-							dispatch={props.dispatch}
-						/>} />
+			<div className="content">
+				
 
-					<Route path="/profile" render={() =>
-						<Profile
-							profilePage={props.state.profilePage}
-							dispatch={props.dispatch}
-						/>} />
+				{/* <Route path="" render={() =>
+					<h1 style={{color: 'white'}}>Welcome to "The Neon Wall" Space</h1>} /> */}
 
-					<Route path="/news" render={() => <News />} />
+				<Route path="/dialogs" render={() =>
+					<DialogsContainer />} />
 
-					<Route path="/music" render={() => <Music />} />
+				<Route path="/profile" render={() =>
+					<ProfileContainer />} />
 
-					<Route path="/settings" render={() => <Settings />} />
+				<Route path="/users" render={() =>
+					<UsersContainer />} />
 
-				</div>
+				<Route path="/news" render={() =>
+					<News />} />
+
+				<Route path="/music" render={() =>
+					<Music />} />
+
+				<Route path="/settings" render={() =>
+					<Settings />} />
 
 			</div>
-		</BrowserRouter>
+
+		</div>
 	);
 }
 

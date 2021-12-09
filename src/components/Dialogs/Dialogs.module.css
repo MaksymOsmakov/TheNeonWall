@@ -14,7 +14,9 @@
 	cursor: pointer;
 	margin: 15px 0;
 }
-
+.dialogWindow {
+	word-wrap: break-word;
+}
 .send {
 	display: flex;
 	flex-direction: column;
@@ -48,7 +50,6 @@
 	padding-bottom: 0;
 	display: grid;
 	grid-template-rows: 1fr 100px;
-
 }
 
 .message {

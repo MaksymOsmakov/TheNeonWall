@@ -1,0 +1,58 @@
+.selectedPage {
+	font-weight: bold;
+	font-size: 20px;
+}
+.pagination_section {
+	display: flex;
+	overflow-x: auto;
+	max-width: 946px;
+}
+.pagination_section span{
+	color: #fff;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.card_wrapper {
+	margin: 5px 0px 0px 0px;
+	border: 1px solid rgba(255, 255, 255, 0.37);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: center;
+}
+.card_ava {
+	text-align: center;
+}
+.avatar {
+	margin: 3px 0px 0px 11px;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+}
+.btn_wrapper {
+	margin: 0px 0px 5px 11px;
+}
+.btn_wrapper button {
+	width: 100px;
+}
+
+.card_description {
+	margin-left: 40px;
+}
+.card_description ul li {
+	color: #fff;
+	text-decoration: none;
+}
+.card_description ul {
+	list-style: none;
+}

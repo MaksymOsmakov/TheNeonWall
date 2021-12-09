@@ -1,3 +1,8 @@
+import profileReducer from './ProfileReducer';
+import dialogsReducer from './DialogsReducer';
+import sideBarReducer from './SideBarReducer';
+
+
 let store = {
 
 	_state: {
@@ -11,7 +16,7 @@ let store = {
 			newPostText: 'it-kamasutra',
 		},
 
-		messagesPage: {
+		dialogsPage: {
 			messages: [
 				{ id: 2, message: 'low' },
 				{ id: 1, message: 'hi' },
@@ -20,8 +25,7 @@ let store = {
 				{ id: 5, message: 'senior' },
 				{ id: 6, message: 'jun' },
 			],
-
-			newMessageText: 'rickandmorty',
+			newMessageBody: '',
 
 			dialogs: [
 				{ id: 1, name: 'Poncho' },
@@ -33,7 +37,7 @@ let store = {
 			],
 		},
 
-		navbarPage: {
+		sidePage: {
 			friends: [
 				{ id: 1, name: 'Octopus Man', avatar: 'https://rickandmortyapi.com/api/character/avatar/254.jpeg' },
 				{ id: 2, name: 'Amish Cyborg', avatar: 'https://rickandmortyapi.com/api/character/avatar/16.jpeg' },
@@ -46,36 +50,15 @@ let store = {
 
 
 	dispatch(action) {
-		if (action.type === 'ADD-POST') {
-			let newPost = {
-				id: 3,
-				message: this._state.profilePage.newPostText,
-				likesCount: 0
-			};
-			this._state.profilePage.posts.push(newPost);
-			this._state.profilePage.newPostText = "";//передаем пустую строку чтобы после поста очистить поле ввода
-			this._callSubscriber(this._state);
-		} else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-			this._state.profilePage.newPostText = action.newText;
-			this._callSubscriber(this._state);
-		} else if (action.type === 'ADD-MESSAGE') {
-			let newMessage = {
-				id: 7,
-				message: this._state.messagesPage.newMessageText,
-			};
-			this._state.messagesPage.messages.push(newMessage);
-			this._state.messagesPage.newMessageText = "";//передаем пустую строку чтобы после поста очистить поле ввода
-			this._callSubscriber(this._state);
-		} else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-			this._state.messagesPage.newMessageText = action.newMessage;
-			this._callSubscriber(this._state);
-		}
+		this._state.profilePage = profileReducer(this._state.profilePage, action);
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+		this._state.sidePage = sideBarReducer(this._state.sidePage, action);
+		this._callSubscriber(this._state);
 	},
 
 
 
-	//section for getting rid of circular dependency
-	// теперь _callSubscriber заменяет reranderEntireThree
+	
 	_callSubscriber() {
 		//plug
 	},
@@ -88,23 +71,4 @@ let store = {
 
 }
 
-
-export const addPostActionCreator = () => {
-	return {
-		type: 'ADD-POST'
-	}
-}
-export const updateNewPostTextActionCreator = (text) => {
-	return {
-		type: 'UPDATE-NEW-POST-TEXT', newText: text
-	}
-}
-
-
-
-
-
-
-
-
-export default store;
+// export default store;

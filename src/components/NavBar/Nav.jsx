@@ -5,19 +5,20 @@ import Friends from '../Friends/Friends';
 
 
 
-function Nav(props) {
-	let friendsElements = props.state.friends.map(friend => <Friends name={friend.name} avatar={friend.avatar} id={friend.id} />)
+const Nav = (props) => {
+	let state = props.sidePage;
+	let friendsElements = state.friends.map(friend => <Friends name={friend.name} avatar={friend.avatar} id={friend.id} />)
 	return (
 		<nav className={classes.nav}>
 
 			<div className={classes.navItems}>
 				<div className={classes.item}><NavLink activeClassName={classes.active} to="/profile">Profile</NavLink></div>
 				<div className={classes.item}><NavLink activeClassName={classes.active} to="/dialogs">Messages</NavLink></div>
+				<div className={classes.item}><NavLink activeClassName={classes.active} to="/users">Users</NavLink></div>
 				<div className={classes.item}><NavLink activeClassName={classes.active} to="/news">News</NavLink></div>
 				<div className={classes.item}><NavLink activeClassName={classes.active} to="/music">Music</NavLink></div>
 				<div className={classes.item}><NavLink activeClassName={classes.active} to="/settings">Settings</NavLink></div>
 			</div>
-
 
 			<div className={classes.fiendsElementsWrapper}>
 				<div>
@@ -26,9 +27,7 @@ function Nav(props) {
 				<div className={classes.friendsElements}>
 					{friendsElements}
 				</div>
-
 			</div>
-
 
 		</nav>
 	);
