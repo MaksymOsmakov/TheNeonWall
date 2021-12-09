@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/TheNeonWall/static/css/main.88cd1c1e.chunk.css",
+    "main.js": "/TheNeonWall/static/js/main.e27c2e8d.chunk.js",
+    "main.js.map": "/TheNeonWall/static/js/main.e27c2e8d.chunk.js.map",
+    "runtime-main.js": "/TheNeonWall/static/js/runtime-main.5586615c.js",
+    "runtime-main.js.map": "/TheNeonWall/static/js/runtime-main.5586615c.js.map",
+    "static/js/2.346400c1.chunk.js": "/TheNeonWall/static/js/2.346400c1.chunk.js",
+    "static/js/2.346400c1.chunk.js.map": "/TheNeonWall/static/js/2.346400c1.chunk.js.map",
+    "static/js/3.cacc543b.chunk.js": "/TheNeonWall/static/js/3.cacc543b.chunk.js",
+    "static/js/3.cacc543b.chunk.js.map": "/TheNeonWall/static/js/3.cacc543b.chunk.js.map",
+    "index.html": "/TheNeonWall/index.html",
+    "static/css/main.88cd1c1e.chunk.css.map": "/TheNeonWall/static/css/main.88cd1c1e.chunk.css.map",
+    "static/js/2.346400c1.chunk.js.LICENSE.txt": "/TheNeonWall/static/js/2.346400c1.chunk.js.LICENSE.txt",
+    "static/media/avatarIsNull.80e4c874.png": "/TheNeonWall/static/media/avatarIsNull.80e4c874.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5586615c.js",
+    "static/js/2.346400c1.chunk.js",
+    "static/css/main.88cd1c1e.chunk.css",
+    "static/js/main.e27c2e8d.chunk.js"
+  ]
+}
