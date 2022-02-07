@@ -1,0 +1,2 @@
+(this["webpackJsonpsamurai-the-first"]=this["webpackJsonpsamurai-the-first"]||[]).push([[5],{300:function(s,t,e){"use strict";e.r(t);e(1);var i=e(0);t.default=function(s){return Object(i.jsx)("div",{children:Object(i.jsx)("h1",{children:"news"})})}}}]);
+//# sourceMappingURL=5.601431f4.chunk.js.map
