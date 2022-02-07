@@ -9,8 +9,7 @@ import { Redirect } from 'react-router-dom';
 import style from '../Common/FormsControls.module.css'
 
 const LoginForm = (props) => {
-	const { handleSubmit } = props
-	const { error } = props
+	const { handleSubmit, error } = props
 	return (
 		<form action="" onSubmit={handleSubmit} className={classes.form}>
 
@@ -45,7 +44,7 @@ const Login = (props) => {
 	}
 	return (
 		<>
-			<h2>Login</h2>
+			<h2>Sing in / <a style={{ color: 'white', textDecoration: 'none' }} href="https://social-network.samuraijs.com/signUp">Sing up</a></h2>
 			<LoginReduxForm onSubmit={onSubmit} />
 		</>
 	);
