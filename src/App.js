@@ -1,59 +1,93 @@
-import React from 'react';
+import React, { Component, Suspense } from 'react';
 import './App.css';
-import Header from './components/Header/Header';
 import NavContainer from './components/NavBar/NavContainer';
-import ProfileContainer from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import { Route } from 'react-router';
-import News from './components/News/News';
-import Music from './components/Music/Music';
-import Settings from './components/Settings/Settings';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { compose } from "redux";
+import { initializeAPP } from './redux/AppReducer';
+import Preloader from './components/Common/Preloader';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/Redux-store';
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const Music = React.lazy(() => import('./components/Music/Music'));
+const Settings = React.lazy(() => import('./components/Settings/Settings'));
+const News = React.lazy(() => import('./components/News/News'));
 
 
 
 
 
-function App() {
-	return (
+class App extends Component {
 
-		<div className='app-wrapper'>
+	componentDidMount() {
+		this.props.initializeAPP();
+	}
 
-			<Header />
+	render() {
+		if (!this.props.initialized) {
+			return <Preloader />
+		}
+		return (
 
-			<NavContainer />
+			<div className='app-wrapper'>
 
-			<div className="content">
-				
+				<HeaderContainer />
+				<NavContainer />
 
-				{/* <Route path="" render={() =>
-					<h1 style={{color: 'white'}}>Welcome to "The Neon Wall" Space</h1>} /> */}
+				<div className="content">
+					<Suspense fallback={<Preloader/>}>
 
-				<Route path="/dialogs" render={() =>
-					<DialogsContainer />} />
+						<Route path="/dialogs" render={() =>
+							<DialogsContainer />} />
 
-				<Route path="/profile" render={() =>
-					<ProfileContainer />} />
 
-				<Route path="/users" render={() =>
-					<UsersContainer />} />
+						<Route path="/profile/:userId?" render={() =>
+							<ProfileContainer />} />
 
-				<Route path="/news" render={() =>
-					<News />} />
+						<Route path="/users" render={() =>
+							<UsersContainer />} />
 
-				<Route path="/music" render={() =>
-					<Music />} />
+						<Route path="/news" render={() =>
+							<News />} />
 
-				<Route path="/settings" render={() =>
-					<Settings />} />
+						<Route path="/music" render={() =>
+							<Music />} />
+
+						<Route path="/settings" render={() =>
+							<Settings />} />
+
+						<Route path="/Login" render={() =>
+							<Login />} />
+
+					</Suspense>
+				</div>
 
 			</div>
-
-		</div>
-	);
+		);
+	}
 }
 
+const mapStateToProps = (state) => ({
+	initialized: state.app.initialized
+})
 
+const AppContainer = compose(
+	withRouter,
+	connect(mapStateToProps, { initializeAPP }))(App);
 
-export default App;
+const MainApp = (props) => {
+	return <BrowserRouter>
+		<Provider store={store}>
+			<AppContainer />
+		</Provider>
+	</BrowserRouter>
+}
 
+export default MainApp;

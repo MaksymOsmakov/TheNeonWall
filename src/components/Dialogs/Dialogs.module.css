@@ -3,6 +3,7 @@
 	grid-template-columns: 1fr 2fr;
 	color: #fff;
 	height: 99%;
+	margin-bottom: 30px;
 }
 
 .dialogsItems {
@@ -48,9 +49,10 @@
 	padding: 35px;
 	padding-bottom: 0;
 	display: grid;
-	grid-template-rows: 1fr 100px;
+	grid-template-rows: 1fr 120px;
 }
 
 .message {
 	color: #fff;
 }
+

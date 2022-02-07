@@ -1,17 +1,4 @@
-.selectedPage {
-	font-weight: bold;
-	font-size: 20px;
-}
-.pagination_section {
-	display: flex;
-	overflow-x: auto;
-	max-width: 946px;
-}
-.pagination_section span{
-	color: #fff;
-	padding: 5px;
-	cursor: pointer;
-}
+
 
 .card_wrapper {
 	margin: 5px 0px 0px 0px;
@@ -28,6 +15,7 @@
 }
 .card_ava {
 	text-align: center;
+	cursor: pointer;
 }
 .avatar {
 	margin: 3px 0px 0px 11px;
@@ -45,6 +33,9 @@
 .btn_wrapper button {
 	width: 100px;
 }
+.btn_wrapper button:disabled {
+	border-color: red;
+}
 
 .card_description {
 	margin-left: 40px;
@@ -55,4 +46,7 @@
 }
 .card_description ul {
 	list-style: none;
+}
+a {
+	cursor: pointer !important;
 }
