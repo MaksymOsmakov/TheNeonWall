@@ -1,4 +1,4 @@
-import * as axios from 'axios'
+import axios from 'axios'
 
 const instance = axios.create({
 	withCredentials: true,
@@ -15,26 +15,33 @@ export const usersAPI = {
 				return response.data;
 			});
 	},
-	follow(userId) {
+	follow(userId: number) {
 		return instance.post(`follow/${userId}`)
 	},
-	unfollow(userId) {
+	unfollow(userId: number) {
 		return instance.delete(`follow/${userId}`)
 	},
-	setUserProfile(userId) {
+	setUserProfile(userId: number) {
 		return instance.get(`profile/${userId}`)
 	},
-	getProfile(userId) {
+	getProfile(userId: number) {
 		console.warn('you use old api method! change it!')
 		return profileAPI.getProfile(userId);
 	}
 }
 
+
+type meResponseType = {
+	data: { id: number, email: string, login: string }
+	resultCode: number
+	messages: Array<string>
+}
+
 export const authAPI = {
 	me() {
-		return instance.get(`auth/me`);
+		return instance.get<meResponseType>(`auth/me`).then(res => res.data);
 	},
-	login(email, password, rememberMe = false) {
+	login(email: string, password: string, rememberMe = false) {
 		return instance.post(`auth/login`, { email, password, rememberMe });
 	},
 	logout() {
@@ -43,13 +50,13 @@ export const authAPI = {
 }
 
 export const profileAPI = {
-	getProfile(userId) {
+	getProfile(userId: number) {
 		return instance.get(`profile/${userId}`);
 	},
-	getStatus(userId) {
+	getStatus(userId: number) {
 		return instance.get(`profile/status/${userId}`);
 	},
-	updateStatus(status) {
+	updateStatus(status: string) {
 		return instance.put(`profile/status`, { status: status });
 	}
 }

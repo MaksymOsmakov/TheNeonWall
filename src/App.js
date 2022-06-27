@@ -42,7 +42,7 @@ class App extends Component {
 				<NavContainer />
 
 				<div className="content">
-					<Suspense fallback={<Preloader/>}>
+					<Suspense fallback={<Preloader />}>
 
 						<Route path="/dialogs" render={() =>
 							<DialogsContainer />} />
@@ -52,7 +52,7 @@ class App extends Component {
 							<ProfileContainer />} />
 
 						<Route path="/users" render={() =>
-							<UsersContainer />} />
+							<UsersContainer pageTitle={"Samurai"} />} />
 
 						<Route path="/news" render={() =>
 							<News />} />

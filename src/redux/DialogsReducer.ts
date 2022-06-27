@@ -1,5 +1,14 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
 
+type dialogType = {
+	id: number
+	name: string
+}
+
+type messageType = {
+	id: number
+	message: string
+}
 
 let initialState = {
 	messages: [
@@ -9,7 +18,7 @@ let initialState = {
 		{ id: 4, message: 'lol' },
 		{ id: 5, message: 'senior' },
 		{ id: 6, message: 'jun' },
-	],
+	] as Array<messageType>,
 
 	dialogs: [
 		{ id: 1, name: 'Poncho' },
@@ -18,10 +27,13 @@ let initialState = {
 		{ id: 4, name: 'Max' },
 		{ id: 5, name: 'Birdperson' },
 		{ id: 6, name: 'Mr.Poopybutthole' },
-	],
+	] as Array<dialogType>,
 };
 
-const dialogsReducer = (state = initialState, action) => {
+export type initialStateType = typeof initialState
+
+
+const dialogsReducer = (state = initialState, action: any): initialStateType => {
 
 	let stateCopy;
 
@@ -30,17 +42,20 @@ const dialogsReducer = (state = initialState, action) => {
 			let body = action.newMessageBody;
 			stateCopy = {
 				...state,
-				messages: [...state.messages, {id:7, message: body} ]
+				messages: [...state.messages, { id: 7, message: body }]
 			};
-			
+
 			return stateCopy;
 		default:
 			return state;
 	}
 
 }
-
-export const sendMessageCreator = (newMessageBody) => {
+type sendMessageCreatorType = {
+	type: typeof SEND_MESSAGE
+	newMessageBody: string
+}
+export const sendMessageCreator = (newMessageBody: string): sendMessageCreatorType => {
 	return {
 		type: 'SEND_MESSAGE', newMessageBody
 	}

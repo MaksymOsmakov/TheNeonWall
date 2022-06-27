@@ -3,9 +3,21 @@ import avatarIsNull from '../../assets/images/avatarIsNull.png'
 import classes from "./Users.module.css"
 import { NavLink } from 'react-router-dom';
 import Paginator from '../Common/Paginator';
+import { UserType } from '../../types/Types';
+
+type PropsType = {
+	currentPage: number
+	onPageChanged: (a: number) => void
+	totalUsersCount: number
+	pageSize: number
+	users: Array<UserType>
+	followInProgress: Array<number>
+	unfollow:(id:number)=>void
+	follow:(id:number)=>void
+}
 
 
-const Users = (props) => {
+const Users: React.FC<PropsType> = (props) => {
 	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 	let pages = [];
 	for (let i = 1; i <= pagesCount; i++) {
@@ -13,10 +25,10 @@ const Users = (props) => {
 	}
 	return (
 		<>
-			<Paginator  currentPage={props.currentPage}
+			<Paginator currentPage={props.currentPage}
 				onPageChanged={props.onPageChanged}
 				totalItemsCount={props.totalUsersCount}
-				pageSize={props.pageSize}/>
+				pageSize={props.pageSize} />
 			{
 				props.users.map(u =>
 					<div key={u.id} className={classes.card_wrapper}>

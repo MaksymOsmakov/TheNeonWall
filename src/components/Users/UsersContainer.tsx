@@ -1,21 +1,47 @@
 import React from "react";
 import { connect } from "react-redux";
-import { follow, unfollow, setUsers, setFollowInProgress, getUsersThunkCreator } from './../../redux/UsersReducer';
+import { follow, unfollow, setUsers, getUsersThunkCreator } from './../../redux/UsersReducer';
 import { compose } from "redux";
 import { getCurrentPage, getFollowInProgress, getPageSize, getUsers, getTotalUsersCount, getIsFetching } from './../../redux/Users-selectors';
 import Users from "./Users";
 import Preloader from './../Common/Preloader';
+import { UserType } from "../../types/Types";
+import { AppStateType } from "../../redux/Redux-store";
 
-class UsersContainerComponent extends React.Component {
+type mapStatePropsType = {
+	users: Array<UserType>
+	pageSize: number
+	totalUsersCount: number
+	currentPage: number
+	isFetching: boolean
+	followInProgress: Array<number>
+}
+type mapDispatchPropsType = {
+	setUsers: (users: Array<UserType>) => void
+	follow: (userId: number) => void
+	unfollow: (userId: number) => void
+	getUsersThunkCreator: (currentPage: number, pageSize: number) => void
+}
+
+
+type ownPropsType = {
+	pageTitle: string
+}
+
+
+type PropsType = ownPropsType & mapDispatchPropsType & mapStatePropsType
+
+class UsersContainerComponent extends React.Component<PropsType> {
 	componentDidMount() {
 		this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
 	}
-	onPageChanged = (pageNumber) => {
+	onPageChanged = (pageNumber: number) => {
 		this.props.getUsersThunkCreator(pageNumber, this.props.pageSize);
 	}
 
 	render() {
 		return <>
+			<h2>{this.props.pageTitle}</h2>
 			{this.props.isFetching ? <Preloader /> : null}
 			<Users totalUsersCount={this.props.totalUsersCount}
 				pageSize={this.props.pageSize}
@@ -29,7 +55,7 @@ class UsersContainerComponent extends React.Component {
 	}
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType): mapStatePropsType => {
 	return {
 		users: getUsers(state),
 		pageSize: getPageSize(state),
@@ -41,5 +67,13 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-	connect(mapStateToProps, { follow, unfollow, setUsers, setFollowInProgress, getUsersThunkCreator }),
+	connect<mapStatePropsType, mapDispatchPropsType, ownPropsType, AppStateType>(
+		mapStateToProps,
+		{
+			follow,
+			unfollow,
+			setUsers,
+			getUsersThunkCreator
+		}
+	),
 )(UsersContainerComponent);

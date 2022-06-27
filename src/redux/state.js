@@ -1,5 +1,5 @@
 import profileReducer from './ProfileReducer';
-import dialogsReducer from './DialogsReducer';
+import dialogsReducer from './DialogsReducer.jts';
 import sideBarReducer from './SideBarReducer';
 
 

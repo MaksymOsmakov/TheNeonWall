@@ -3,7 +3,6 @@ import Preloader from '../../Common/Preloader';
 import classes from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './../ProfileStatus/ProfileStatusWithHooks';
 
-
 const ProfileInfo = (props) => {
 	if (!props.profile) {       //(props.profile == null || props.profile)"big writes" //(!props.profile)"short writes"
 		return <Preloader />
